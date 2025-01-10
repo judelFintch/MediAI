@@ -13,13 +13,18 @@
     <!-- Navigation -->
     <nav class="navbar">
         <div class="nav-container">
-            <div class="logo">
-                <img src="https://images.unsplash.com/photo-1505751172876-fa1923c5c528?auto=format&fit=crop&q=80&w=50&h=50"
-                    alt="MediAI Logo" class="logo-img">
-                <span>MediAI</span>
-            </div>
+            <a href="{{ route('home') }}">
+                <div class="logo">
+
+                    <img src="https://images.unsplash.com/photo-1505751172876-fa1923c5c528?auto=format&fit=crop&q=80&w=50&h=50"
+                        alt="MediAI Logo" class="logo-img">
+
+                    <span>MediAI</span>
+
+                </div>
+            </a>
             <div class="nav-links">
-                <a href="#" class="nav-link">Accueil</a>
+                <a href="{{ route('home') }}" class="nav-link">Accueil</a>
                 <a href="#" class="nav-link">Services</a>
                 <a href="#" class="nav-link">Contact</a>
                 <button class="btn btn-outline">Se connecter</button>

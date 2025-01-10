@@ -1,15 +1,18 @@
 <?php
 
-namespace App\Livewire\Pages\Home;
+namespace App\Livewire\Pages\Assistant;
 
 use Livewire\Component;
 use Livewire\Attributes\Layout;
 use App\Services\OpenAIService;
 use Illuminate\Support\Facades\Validator;
 
+
+
 #[Layout('layouts.app')]
-class Index extends Component
+class Chat extends Component
 {
+
     public ?string $userInput; // Pour stocker l'entrée de l'utilisateur
     public ?string $response; // Pour stocker la réponse de l'API
     public $painIntensity;
@@ -64,6 +67,6 @@ class Index extends Component
 
     public function render()
     {
-        return view('livewire.pages.home.index');
+        return view('livewire.pages.assistant.chat');
     }
 }
