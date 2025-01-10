@@ -1,20 +1,6 @@
 <div class="flex h-screen bg-gray-50">
     <!-- Barre latérale -->
-    <aside
-        id="sidebar"
-        class="fixed inset-y-0 left-0 z-30 w-64 bg-blue-700 text-white flex flex-col transform -translate-x-full lg:translate-x-0 transition-transform duration-300">
-        <div class="p-4 font-bold text-lg border-b border-blue-500">Historique</div>
-        <nav class="flex-1 overflow-y-auto p-4 space-y-2">
-            <a href="#" class="block px-4 py-2 bg-blue-600 rounded hover:bg-blue-500 transition">Conversation 1</a>
-            <a href="#" class="block px-4 py-2 bg-blue-600 rounded hover:bg-blue-500 transition">Conversation 2</a>
-            <a href="#" class="block px-4 py-2 bg-blue-600 rounded hover:bg-blue-500 transition">Conversation 3</a>
-        </nav>
-        <div class="p-4 border-t border-blue-500">
-            <button class="w-full bg-red-500 py-2 rounded-lg hover:bg-red-400 transition">
-                Effacer l'historique
-            </button>
-        </div>
-    </aside>
+   
 
     <!-- Overlay pour mobile -->
     <div id="overlay" class="fixed inset-0 bg-black bg-opacity-50 z-20 hidden lg:hidden"></div>
