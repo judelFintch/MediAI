@@ -1,10 +1,10 @@
 # MediAI
-MediAI is an AI-powered medical assistant designed to help healthcare professionals and patients better manage diagnostics, treatments, and medical follow-ups. Leveraging advanced natural language processing (NLP) and machine learning algorithms
-
-<!-- Add a banner if available -->
-
 MediAI is an intelligent medical assistant designed to help healthcare professionals and patients manage diagnostics, treatments, and medical follow-ups. This project uses Laravel, Livewire, Alpine.js, SQLite, and GPT-3 (via OpenAI API) to deliver a seamless user experience and powerful features.
 Features ✨
+
+![MediAI Banner](./public/images/medi-ai-banner.png)
+
+
 
     Symptom Analysis: Patients can describe their symptoms and receive diagnostic suggestions.
 
@@ -36,7 +36,7 @@ Follow these steps to set up the project locally:
     bash
     Copy
 
-    git clone https://github.com/your-username/medi-ai-assistant.git
+    git clone https://github.com/judelFintch/MediAI.git
     cd medi-ai-assistant
 
     Install PHP Dependencies:
