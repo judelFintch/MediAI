@@ -1,6 +1,6 @@
 <div class="flex h-screen bg-gray-50">
     <!-- Barre latérale -->
-   
+
 
     <!-- Overlay pour mobile -->
     <div id="overlay" class="fixed inset-0 bg-black bg-opacity-50 z-20 hidden lg:hidden"></div>
@@ -23,13 +23,14 @@
             <!-- Exemple de message utilisateur -->
             <div class="flex justify-end">
                 <div class="max-w-lg w-full md:w-3/4 lg:w-2/3 bg-blue-500 text-white p-4 rounded-lg shadow">
-                    Bonjour, je ressens une douleur.
+                    Bonjour, je suis ton medecin virtuel.
                 </div>
             </div>
 
             <!-- Exemple de message assistant -->
             <div class="flex justify-start">
-                <div class="max-w-lg w-full md:w-3/4 lg:w-2/3 bg-white text-gray-800 p-4 rounded-lg shadow border border-gray-300">
+                <div
+                    class="max-w-lg w-full md:w-3/4 lg:w-2/3 bg-white text-gray-800 p-4 rounded-lg shadow border border-gray-300">
                     Merci pour votre message. Pouvez-vous préciser vos symptômes ?
                 </div>
             </div>
