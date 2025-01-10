@@ -11,7 +11,8 @@ class OpenAIService
     public function __construct()
     {
         $this->client = new Client([
-            'base_uri' => 'https://api.openai.com/v1/chat/completions/',
+            'base_uri' => 'https://api.openai.com/v1/',
+            'verify' => false,
             'headers' => [
                 'Authorization' => 'Bearer ' . env('OPENAI_API_KEY'),
                 'Content-Type' => 'application/json',
