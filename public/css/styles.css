@@ -1,7 +1,7 @@
 :root {
-    --primary-color: #007BFF;
+    --primary-color: #007bff;
     --primary-dark: #0056b3;
-    --accent-color: #28A745;
+    --accent-color: #28a745;
     --background-color: #ffffff;
     --text-color: #333333;
     --gray-light: #f8f9fa;
@@ -13,7 +13,7 @@
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-    font-family: 'Inter', sans-serif;
+    font-family: "Inter", sans-serif;
 }
 
 body {

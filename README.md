@@ -149,7 +149,7 @@ For questions, feedback, or collaboration opportunities, feel free to reach out:
 
     Your Name
 
-    Email: your.email@example.com
+    Email: your.@example.com
 
     GitHub: Your GitHub Profile
 
