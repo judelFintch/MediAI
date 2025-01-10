@@ -53,7 +53,7 @@
                 @foreach ($conversationHistory as $message)
                     <div class="flex {{ $message['role'] === 'user' ? 'justify-end' : 'justify-start' }}">
                         <div
-                            class="max-w-lg w-full md:w-3/4 lg:w-2/3 {{ $message['role'] === 'user' ? 'bg-blue-500 text-white' : 'bg-white text-gray-800 border border-gray-300' }} p-4 rounded-lg shadow">
+                            class="max-w-full md:max-w-3/4 lg:max-w-2/3 {{ $message['role'] === 'user' ? 'bg-blue-500 text-white' : 'bg-white text-gray-800 border border-gray-300' }} p-4 rounded-lg shadow">
                             {{ $message['content'] }}
                         </div>
                     </div>
