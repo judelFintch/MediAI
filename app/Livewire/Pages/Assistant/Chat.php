@@ -7,18 +7,15 @@ use Livewire\Attributes\Layout;
 use App\Services\OpenAIService;
 use Illuminate\Support\Facades\Validator;
 
-
-
 #[Layout('layouts.app')]
 class Chat extends Component
 {
-
-    public ?string $userInput; // Pour stocker l'entrée de l'utilisateur
-    public ?string $response; // Pour stocker la réponse de l'API
-    public $painIntensity;
-    public ?string $painDuration;
-
+    public ?string $userInput = null; // Pour stocker l'entrée de l'utilisateur
+    public ?string $response = null; // Pour stocker la réponse de l'API
+    public ?array $responseParts = [];
+    public array $conversationHistory = []; // Historique de la conversation
     protected $openAIService;
+
     const MESSAGE_ERROR = 'Veuillez entrer un message valide.';
 
     public function __construct()
@@ -29,15 +26,17 @@ class Chat extends Component
     protected function getInitialMessages(): array
     {
         return [
-            ['role' => 'system', 'content' => 'tu es un assistant medical , capable de donner de Diagnostic sur base de plainte, symptome et de la duree.'],
-            ['role' => 'system', 'content' => 'Réponds de manière concise et précise. Utilise un langage simple et clair et proposition.'],
-            ['role' => 'system', 'content' => ' recommende toujours de voir un medecin physique apres chaque.'],
-            ['role' => 'system', 'content' => ' continue la conversation en demandant plus d information pour une bonne conclusion.'],
+            ['role' => 'system', 'content' => 'tu es un assistant médical, capable de donner des diagnostics sur la base de plaintes, symptômes et durées.'],
+            ['role' => 'system', 'content' => 'Réponds de manière concise et précise. Utilise un langage simple et clair.'],
+            ['role' => 'system', 'content' => 'Recommande toujours de voir un médecin physique après chaque diagnostic.'],
+            ['role' => 'system', 'content' => 'Suggère toujours un enregistrement avec des éléments réels comme l’identité et le pays pour de meilleurs résultats.'],
+            ['role' => 'system', 'content' => 'Continue la conversation en demandant plus d’informations pour une bonne conclusion.'],
         ];
     }
 
     public function sendMessage()
     {
+        // Validation de l'entrée utilisateur
         $validator = Validator::make(['userInput' => $this->userInput], [
             'userInput' => 'required|string|min:1',
         ]);
@@ -47,17 +46,25 @@ class Chat extends Component
             return;
         }
 
-        $messages = array_merge($this->getInitialMessages(), [
-            [
-                'role' => 'user',
-                'content' => "Symptome: {$this->userInput}\nDurée des symptômes : {$this->painDuration}\nIntensité de la douleur : {$this->painIntensity}"
-            ],
+        // Construction des messages pour l'API
+        $userMessage = [
+            'role' => 'user',
+            'content' => $this->userInput
+        ];
 
-        ]);
+        $messages = array_merge($this->getInitialMessages(), $this->conversationHistory, [$userMessage]);
 
         try {
+            // Appel à l'API OpenAI
             $result = $this->openAIService->chat($messages);
             $this->response = $result['choices'][0]['message']['content'] ?? 'Aucune réponse reçue.';
+
+            // Ajouter les messages à l'historique
+            $this->conversationHistory[] = $userMessage; // Message utilisateur
+            $this->conversationHistory[] = [
+                'role' => 'assistant',
+                'content' => $this->response // Réponse de l'assistant
+            ];
         } catch (\Exception $e) {
             $this->response = 'Erreur : ' . $e->getMessage();
         }
@@ -67,6 +74,8 @@ class Chat extends Component
 
     public function render()
     {
-        return view('livewire.pages.assistant.chat');
+        return view('livewire.pages.assistant.chat', [
+            'conversationHistory' => $this->conversationHistory
+        ]);
     }
 }

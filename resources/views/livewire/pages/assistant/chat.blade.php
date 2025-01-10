@@ -1,66 +1,43 @@
 <div>
-    <!-- Diagnostic Modal -->
-    <div id="diagnosticModal">
-        <div class="modal-content">
-            <span class="close-btn" onclick="closeModal()">&times;</span>
-            <h2>Formulaire de Diagnostic</h2>
+    <div id="virtualAssistant" class="mt-8" style="margin-top: 9rem;">
+        <div class="assistant-container"
+            style="display: flex; flex-direction: column; max-width: 800px; margin: 0 auto; padding: 1.5rem; border: 1px solid #e2e8f0; border-radius: 0.5rem; background: #edf2f7; box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);">
+            <h2
+                style="text-align: center; margin-bottom: 1.5rem; color: #2d3748; font-family: Arial, sans-serif; font-size: 1.5rem;">
+                Assistant Virtuel - Interaction
+            </h2>
 
-            <div class="form-group">
-                <label for="symptoms">Décrivez vos symptômes:</label>
-                <textarea wire:model="userInput" id="symptoms" class="form-control" required></textarea>
+            <!-- Prompt History Section -->
+            <div id="promptHistory"
+                style="flex: 1; overflow-y: auto; padding: 1rem; border: 1px solid #cbd5e0; border-radius: 0.5rem; background: #fff; margin-bottom: 1.5rem; box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); max-height: 300px;">
+                <!-- Vérifier et afficher l'historique des messages -->
+                @if ($conversationHistory && count($conversationHistory) > 0)
+                    @foreach ($conversationHistory as $message)
+                        <div style="margin-bottom: 1rem;">
+                            <span
+                                style="font-weight: bold; color: {{ $message['role'] === 'user' ? '#3182ce' : '#38a169' }};">
+                                {{ $message['role'] === 'user' ? 'Utilisateur:' : 'Assistant:' }}
+                            </span>
+                            <span>{{ $message['content'] }}</span>
+                        </div>
+                    @endforeach
+                @else
+                    <div style="margin-bottom: 1rem; color: #718096; text-align: center;">
+                        Aucun message pour le moment. Commencez la conversation !
+                    </div>
+                @endif
             </div>
-            <div class="form-group">
-                <label>Intensité de la douleur:</label>
-                <div class="radio-group">
-                    <label>
-                        <input wire:model="painIntensity" type="radio" name="pain" value="1">
-                        Légère
-                    </label>
-                    <label>
-                        <input wire:model="painIntensity" type="radio" name="pain" value="2">
-                        Modérée
-                    </label>
-                    <label>
-                        <input wire:model="painIntensity" type="radio" name="pain" value="3">
-                        Sévère
-                    </label>
-                </div>
-            </div>
-            <div class="form-group">
-                <label for="duration">Durée des symptômes:</label>
-                <select wire:model="painDuration" id="duration" class="form-control" required>
-                    <option value="">Sélectionnez une durée</option>
-                    <option value="today">Aujourd'hui</option>
-                    <option value="week">Cette semaine</option>
-                    <option value="month">Ce mois</option>
-                    <option value="longer">Plus longtemps</option>
-                </select>
-            </div>
-            <button wire:click="sendMessage()" class="btn btn-primary">Analyser</button>
 
+            <!-- Input Section -->
+            <div class="input-section" style="display: flex; gap: 0.5rem; align-items: flex-start;">
+                <textarea wire:model="userInput" id="userPrompt" placeholder="Écrivez ici..."
+                    style="flex: 1; padding: 0.75rem; border: 1px solid #cbd5e0; border-radius: 0.25rem; resize: none; font-family: Arial, sans-serif; font-size: 1rem; line-height: 1.5;"
+                    rows="3"></textarea>
+                <button wire:click="sendMessage" id="sendPromptButton"
+                    style="padding: 0.75rem 1rem; background-color: #3182ce; color: white; border: none; border-radius: 0.25rem; cursor: pointer; font-family: Arial, sans-serif; font-size: 1rem; font-weight: bold;">
+                    Envoyer
+                </button>
+            </div>
         </div>
     </div>
-
-
-    <!-- Results Section -->
-    <section id="diagnosticResults" class="features">
-        <div class="features-grid">
-            <h2>Résultats du Diagnostic</h2>
-            <div class="result-card">
-                <p id="diagnosticSummary">
-                    <!-- Le résumé des résultats sera injecté ici -->
-                    Veuillez remplir le formulaire pour obtenir vos résultats.
-                </p>
-                <div class="recommendations">
-                    <h3>Recommandations</h3>
-                    <ul id="recommendationsList">
-                        <!-- Les recommandations générées par GPT-3 s'afficheront ici -->
-                        {{ $response }}
-                    </ul>
-                </div>
-            </div>
-        </div>
-    </section>
-
-
 </div>

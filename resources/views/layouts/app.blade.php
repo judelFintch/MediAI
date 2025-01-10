@@ -18,7 +18,6 @@
 
                     <img src="https://images.unsplash.com/photo-1505751172876-fa1923c5c528?auto=format&fit=crop&q=80&w=50&h=50"
                         alt="MediAI Logo" class="logo-img">
-
                     <span>MediAI</span>
 
                 </div>
@@ -32,13 +31,9 @@
             </div>
         </div>
     </nav>
-
     <body>
         <main>
             {{ $slot }}
         </main>
-
-
     </body>
-
 </html>
