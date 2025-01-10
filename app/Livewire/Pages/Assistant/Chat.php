@@ -7,7 +7,7 @@ use Livewire\Attributes\Layout;
 use App\Services\OpenAIService;
 use Illuminate\Support\Facades\Validator;
 
-#[Layout('layouts.app')]
+#[Layout('layouts.guest')]
 class Chat extends Component
 {
     public ?string $userInput = null; // Pour stocker l'entrée de l'utilisateur

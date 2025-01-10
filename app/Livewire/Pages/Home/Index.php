@@ -7,7 +7,7 @@ use Livewire\Attributes\Layout;
 use App\Services\OpenAIService;
 use Illuminate\Support\Facades\Validator;
 
-#[Layout('layouts.app')]
+#[Layout('layouts.guest')]
 class Index extends Component
 {
     public ?string $userInput; // Pour stocker l'entrée de l'utilisateur
