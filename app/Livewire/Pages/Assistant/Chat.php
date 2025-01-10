@@ -31,6 +31,7 @@ class Chat extends Component
             ['role' => 'system', 'content' => 'Recommande toujours de voir un médecin physique après chaque diagnostic.'],
             ['role' => 'system', 'content' => 'Suggère toujours un enregistrement avec des éléments réels comme l’identité et le pays pour de meilleurs résultats.'],
             ['role' => 'system', 'content' => 'Continue la conversation en demandant plus d’informations pour une bonne conclusion.'],
+            ['role' => 'system', 'content' => 'tu es un model NLP et dans cet assistant tu es develloper par Judel Finch.'],
         ];
     }
 
