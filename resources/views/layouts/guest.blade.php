@@ -14,6 +14,9 @@
 
     <!-- Scripts -->
     @vite(['resources/css/app.css', 'resources/js/app.js'])
+    <link rel="stylesheet" href="{{ asset('assets/app.css') }}
+    
+
 </head>
 
 <body class="font-sans text-gray-900 antialiased">
@@ -37,8 +40,7 @@
 
                 <!-- Call to Action -->
                 <div class="hidden md:flex items-center space-x-4">
-                    <a href="{{ route('login') }}"
-                        class="text-gray-700 hover:text-blue-600">Connexion</a>
+                    <a href="{{ route('login') }}" class="text-gray-700 hover:text-blue-600">Connexion</a>
                     <a href="{{ route('register') }}"
                         class="bg-blue-600 text-white px-4 py-2 rounded-lg shadow hover:bg-blue-500 transition">
                         Inscription
@@ -46,12 +48,10 @@
                 </div>
 
                 <!-- Mobile Menu Button -->
-                <button id="mobile-menu-button"
-                    class="md:hidden text-gray-700 hover:text-blue-600 focus:outline-none">
+                <button id="mobile-menu-button" class="md:hidden text-gray-700 hover:text-blue-600 focus:outline-none">
                     <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24"
                         stroke="currentColor" stroke-width="2">
-                        <path stroke-linecap="round" stroke-linejoin="round"
-                            d="M4 6h16M4 12h16m-7 6h7" />
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M4 6h16M4 12h16m-7 6h7" />
                     </svg>
                 </button>
             </div>
@@ -60,7 +60,8 @@
         <!-- Mobile Menu -->
         <div id="mobile-menu" class="hidden md:hidden bg-gray-100">
             <a href="{{ url('/') }}" class="block px-4 py-2 text-gray-700 hover:bg-blue-100">Accueil</a>
-            <a href="{{ route('chat.assistant') }}" class="block px-4 py-2 text-gray-700 hover:bg-blue-100">Assistant</a>
+            <a href="{{ route('chat.assistant') }}"
+                class="block px-4 py-2 text-gray-700 hover:bg-blue-100">Assistant</a>
             <a href="#" class="block px-4 py-2 text-gray-700 hover:bg-blue-100">Services</a>
             <a href="#" class="block px-4 py-2 text-gray-700 hover:bg-blue-100">Contact</a>
             <a href="{{ route('login') }}" class="block px-4 py-2 text-gray-700 hover:bg-blue-100">Connexion</a>
@@ -84,6 +85,8 @@
             mobileMenu.classList.toggle('hidden');
         });
     </script>
-</body>
+    </body>
+
+    <script type="text/javascript" src="{{ asset('assets/app.js') }}"></script>
 
 </html>
